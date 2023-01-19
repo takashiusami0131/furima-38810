@@ -1,24 +1,59 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
+| Column             | Type     | Options                   |
+| ----------------   | -------- | ------------------------- |
+| nickname           | string   | null: false               |
+| email              | string   | null: false, unique: true |
+| encrypted_password | string   | null: false               |
+| family_name        | string   | null: false               |
+| first_name         | string   | null: false               |
+| family_name_kana   | string   | null: false               |
+| first_name_kana    | string   | null: false               |
+| birth_day          | datetime | null: false               |
 
-Things you may want to cover:
+### Association
+- has_many :items
+- belongs_to :purchase
 
-* Ruby version
+## itemsテーブル
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| name          | string     | null: false                    |
+| description   | text       | null: false                    |
+| category      | string     | null: false                    |
+| status        | string     | null: false                    |
+| shipping_cost | string     | null: false                    |
+| ship_form     | string     | null: false                    |
+| days          | string     | null: false                    |
+| price         | string     | null: false                    |
+| user          | references | null: false, foreign_key: true |
 
-* System dependencies
+### Association
+- belongs_to :user
+- belongs_to :purchase
 
-* Configuration
+## purchasesテーブル
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| item    | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
+| address | references | null: false, foreign_key: true |
 
-* Database creation
+### Association
+- belongs_to :user
+- belongs_to :purchase
+- has_one :address
 
-* Database initialization
+## addressesテーブル
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | string     | null: false                    |
+| state         | string     | null: false                    |
+| city          | string     | null: false                    |
+| address_line1 | string     | null: false                    |
+| address_line2 | string     | null: false                    |
+| purchase      | references | null: false, foreign_key: true |
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+- belongs_to :purchase
