@@ -25,7 +25,7 @@
 | status_id        | integer    | null: false                    |
 | shipping_cost_id | integer    | null: false                    |
 | ship_form_id     | integer    | null: false                    |
-| shipping_days_id | integer    | null: false                    |
+| shipping_day_id  | integer    | null: false                    |
 | price            | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
 
@@ -48,10 +48,11 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | postal_code   | string     | null: false                    |
-| state         | integer    | null: false                    |
+| state_id      | integer    | null: false                    |
 | city          | string     | null: false                    |
 | address_line1 | string     | null: false                    |
 | building      | string     |                                |
+| phone_number  | integer    | null: false                    |
 | purchase      | references | null: false, foreign_key: true |
 
 ### Association
