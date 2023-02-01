@@ -1,4 +1,4 @@
-class PurchasesFrom
+class PurchaseFrom
   include ActiveModel::Model
  
   attr_accessor :postal_code, :province_id, :city, :address_line1, :building, :phone_number, :user_id, :item_id
