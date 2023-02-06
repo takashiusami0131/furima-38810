@@ -1,7 +1,7 @@
 class PurchaseForm
   include ActiveModel::Model
  
-  attr_accessor :postal_code, :province_id, :city, :address_line1, :building, :phone_number, :user_id, :item_id
+  attr_accessor :postal_code, :province_id, :city, :address_line1, :building, :phone_number, :user_id, :item_id, :token, :purchase_id
   
   with_options presence: true do
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Include hyphen(-)" }
@@ -11,6 +11,7 @@ class PurchaseForm
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'is invalid' }
     validates :user_id
     validates :item_id
+    validates :token
   end
 
  
